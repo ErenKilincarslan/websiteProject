@@ -13,9 +13,10 @@
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800' rel='stylesheet' type='text/css'>
     
         <!-- Place favicon.ico  the root directory -->
-        <link rel="shortcut icon" href="static/img/site/logo.jpg" type="image/x-icon">
-        <link rel="icon" href="static/img/site/logo.jpg" type="image/x-icon">
+        <link rel="shortcut icon" href="static/img/site/logo.png" type="image/x-icon">
+        <link rel="icon" href="static/img/site/logo.png" type="image/x-icon">
     
+        <link rel="stylesheet" href="static/fontsstylesheet.css">
         <link rel="stylesheet" href="static/css/normalize.css">
         <link rel="stylesheet" href="static/css/font-awesome.min.css">
         <link rel="stylesheet" href="static/css/fontello.css">
@@ -71,7 +72,7 @@
     </div>          
     <!--End top header -->
 
-    <nav class="navbar navbar-default ">
+    <nav class="navbar navbar-default " style="background-color: #272727;">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -81,16 +82,21 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ url_for('home_page') }}"><img src="static/img/site/oguzlar.png" alt=""></a>
+                    <img src="static/img/site/logo.png" alt="">
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse yamm" id="navigation">
+                <div class="button navbar-left">
+                    <h2 style="font-family: Dutch801-extra-bold-bt ; color:azure">OĞUZLAR GAYRİMENKUL</h5>
+
+                </div>
                 <div class="button navbar-right">
                     <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.open('register.html')" data-wow-delay="0.4s">Personel Giriş</button>
                 </div>
                 <ul class="main-nav nav navbar-nav navbar-right">
-                    <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="{{ url_for('properties_page')}}">İlanlar</a></li>
+                    <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="{{ url_for('home_page')}}">Anasayfa</a></li>
+                    <li class="wow fadeInDown" data-wow-delay="0.25s"><a class="" href="{{ url_for('properties_page')}}">İlanlar</a></li>
                     <li class="wow fadeInDown" data-wow-delay="0.4s"><a href="{{url_for('contact_page')}}">İletişim</a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
@@ -99,7 +105,7 @@
     <!-- End of nav bar -->
 
 
-<!-- Body content -->
+    <!-- Body content -->
     <div id="content">{% block content %}{% endblock %}</div>
 
     <!-- Footer area-->
@@ -114,12 +120,12 @@
                                 <h4>About us </h4>
                                 <div class="footer-title-line"></div>
 
-                                <img src="static/img/footer-logo.png" alt="" class="wow pulse" data-wow-delay="1s">
-                                <p>Lorem ipsum dolor cum necessitatibus su quisquam molestias. Vel unde, blanditiis.</p>
+                                <img src="static/img/site/logo2.png" alt="oguzlar gayrimenkul logo" class="wow pulse" data-wow-delay="1s">
+                                <p>Sincan Yenikent'te yükselen</p>
                                 <ul class="footer-adress">
                                     <li><i class="pe-7s-map-marker strong"> </i> Menderes Mah. Mevlana Cad. No:22/A</li>
-                                    <li><i class="pe-7s-mail strong"> </i> email@yourcompany.com</li>
-                                    <li><i class="pe-7s-call strong"> </i> +1 908 967 5906</li>
+                                    <li><i class="pe-7s-mail strong"> </i> info@oguzlargayrimenkul.com</li>
+                                    <li><i class="pe-7s-call strong"> </i> 0312 277 33 77</li>
                                 </ul>
                             </div>
                         </div>
