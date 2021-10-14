@@ -5,10 +5,13 @@
         <div class="slide-2">
             <div id="slider" class="sl-slider-wrapper">
                 <div class="sl-slider">
-                    <div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
+
+                    {% for item in [1,2,3,4]%}
+                    
+                        <div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25" data-slice1-scale="2" data-slice2-scale="2">
                         <div class="sl-slide-inner ">
 
-                            <div class="bg-img bg-img-1" style="background-image: url(static/img/slide2/1.jpg);"></div>                             
+                            <div class="bg-img bg-img-1" style="background-image: url(static/img/ofis/tabela.png);"></div>                             
                             <blockquote><cite><a href="property.html">Ralph Waldo villa</a></cite>
                                 <p>You have just dined, and however scrupulously the slaughterhouse 
                                     is concealed in the graceful distance of miles, there is complicity.
@@ -22,68 +25,10 @@
                                 </div>
                             </blockquote>
                         </div>
-                    </div> 
+                        </div> 
+                    
+                    {% endfor %}
 
-                    <div class="sl-slide" data-orientation="vertical" data-slice1-rotation="10" data-slice2-rotation="-15" data-slice1-scale="1.5" data-slice2-scale="1.5">
-
-                        <div class="sl-slide-inner ">
-
-                            <div class="bg-img bg-img-1" style="background-image: url(static/img/slide2/1.jpg);"></div>                             
-                            <blockquote><cite><a href="property.html">Kyoto hows villa</a></cite>
-                                <p>You have just dined, and however scrupulously the slaughterhouse 
-                                    is concealed in the graceful distance of miles, there is complicity.
-                                </p>
-                                <span class="pull-left"><b> Area :</b> 120m </span>
-                                <span class="proerty-price pull-right"> $ 250,000</span>
-                                <div class="property-icon">
-                                    <img src="static/img/icon/bed.png">(5)|
-                                    <img src="static/img/icon/shawer.png">(2)|
-                                    <img src="static/img/icon/cars.png">(1)  
-                                </div>
-                            </blockquote>
-                        </div>
-                    </div>    
-
-                    <div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="3" data-slice2-rotation="3" data-slice1-scale="2" data-slice2-scale="1">
-
-                        <div class="sl-slide-inner ">
-
-                            <div class="bg-img bg-img-1" style="background-image: url(static/img/slide2/1.jpg);"></div>                             
-                            <blockquote><cite><a href="property.html">New Waldo villa</a></cite>
-                                <p>You have just dined, and however scrupulously the slaughterhouse 
-                                    is concealed in the graceful distance of miles, there is complicity.
-                                </p>
-                                <span class="pull-left"><b> Area :</b> 120m </span>
-                                <span class="proerty-price pull-right"> $ 360,000</span>
-                                <div class="property-icon">
-                                    <img src="static/img/icon/bed.png">(5)|
-                                    <img src="static/img/icon/shawer.png">(2)|
-                                    <img src="static/img/icon/cars.png">(1)  
-                                </div>
-                            </blockquote>
-                        </div>
-                    </div>
-
-
-                    <div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="-5" data-slice2-rotation="10" data-slice1-scale="2" data-slice2-scale="1">
-
-                        <div class="sl-slide-inner ">
-
-                            <div class="bg-img bg-img-1" style="background-image: url(static/img/slide2/1.jpg);"></div>                             
-                            <blockquote><cite><a href="property.html">New Waldo villa</a></cite>
-                                <p>You have just dined, and however scrupulously the slaughterhouse 
-                                    is concealed in the graceful distance of miles, there is complicity.
-                                </p>
-                                <span class="pull-left"><b> Area :</b> 120m </span>
-                                <span class="proerty-price pull-right"> $ 360,000</span>
-                                <div class="property-icon">
-                                    <img src="static/img/icon/bed.png">(5)|
-                                    <img src="static/img/icon/shawer.png">(2)|
-                                    <img src="static/img/icon/cars.png">(1)  
-                                </div>
-                            </blockquote>
-                        </div>
-                    </div>
                 </div><!-- /sl-slider -->
 
                 <nav id="nav-dots" class="nav-dots">
@@ -101,15 +46,18 @@
                 <div class="row">
                     <div class="col-md-10 col-md-offset-1 col-sm-12 text-center page-title">
                         <!-- /.feature title -->
-                        <h2>Top submitted property</h2>
-                        <p>Nulla quis dapibus nisl. Suspendisse ultricies commodo arcu nec pretium. Nullam sed arcu ultricies . </p>
+                        <h2>EN SON GİRİLEN İLANLAR
+                        </h2>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="proerty-th">
-                        <div class="col-sm-6 col-md-3 p0">
-                            <div class="box-two proerty-item">
+
+                        {% for item in [0,1,2,3,4,5,6 ] %}
+
+                            <div class="col-sm-6 col-md-3 p0">
+                                <div class="box-two proerty-item">
                                 <div class="item-thumb">
                                     <a href="property-1.html" ><img src="static/img/demo/property-6.jpg"></a>
                                 </div>
@@ -119,95 +67,10 @@
                                     <span class="pull-left"><b>Area :</b> 120m </span>
                                     <span class="proerty-price pull-right">$ 300,000</span>
                                 </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6 col-md-3 p0">
-                            <div class="box-two proerty-item">
-                                <div class="item-thumb">
-                                    <a href="property-2.html" ><img src="static/img/demo/property-2.jpg"></a>
-                                </div>
-                                <div class="item-entry overflow">
-                                    <h5><a href="property-2.html" >Super nice villa </a></h5>
-                                    <div class="dot-hr"></div>
-                                    <span class="pull-left"><b>Area :</b> 120m </span>
-                                    <span class="proerty-price pull-right">$ 300,000</span>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="col-sm-6 col-md-3 p0">
-                            <div class="box-two proerty-item">
-                                <div class="item-thumb">
-                                    <a href="property-3.html" ><img src="static/img/demo/property-5.jpg"></a>
-
-                                </div>
-                                <div class="item-entry overflow">
-                                    <h5><a href="property-3.html" >Super nice villa </a></h5>
-                                    <div class="dot-hr"></div>
-                                    <span class="pull-left"><b>Area :</b> 120m </span>
-                                    <span class="proerty-price pull-right">$ 300,000</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6 col-md-3 p0">
-                            <div class="box-two proerty-item">
-                                <div class="item-thumb">
-                                    <a href="property-1.html" ><img src="static/img/demo/property-4.jpg"></a>
-
-                                </div>
-                                <div class="item-entry overflow">
-                                    <h5><a href="property-1.html" >Super nice villa </a></h5>
-                                    <div class="dot-hr"></div>
-                                    <span class="pull-left"><b>Area :</b> 120m </span>
-                                    <span class="proerty-price pull-right">$ 300,000</span>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="col-sm-6 col-md-3 p0">
-                            <div class="box-two proerty-item">
-                                <div class="item-thumb">
-                                    <a href="property-3.html" ><img src="static/img/demo/property-5.jpg"></a>
-                                </div>
-                                <div class="item-entry overflow">
-                                    <h5><a href="property-3.html" >Super nice villa </a></h5>
-                                    <div class="dot-hr"></div>
-                                    <span class="pull-left"><b>Area :</b> 120m </span>
-                                    <span class="proerty-price pull-right">$ 300,000</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6 col-md-3 p0">
-                            <div class="box-two proerty-item">
-                                <div class="item-thumb">
-                                    <a href="property-2.html" ><img src="static/img/demo/property-3.jpg"></a>
-                                </div>
-                                <div class="item-entry overflow">
-                                    <h5><a href="property-2.html" >Super nice villa </a></h5>
-                                    <div class="dot-hr"></div>
-                                    <span class="pull-left"><b>Area :</b> 120m </span>
-                                    <span class="proerty-price pull-right">$ 300,000</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6 col-md-3 p0">
-                            <div class="box-two proerty-item">
-                                <div class="item-thumb">
-                                    <a href="property-1.html" ><img src="static/img/demo/property-6.jpg"></a>
-                                </div>
-                                <div class="item-entry overflow">
-                                    <h5><a href="property-1.html" >Super nice villa </a></h5>
-                                    <div class="dot-hr"></div>
-                                    <span class="pull-left"><b>Area :</b> 120m </span>
-                                    <span class="proerty-price pull-right">$ 300,000</span>
-                                </div>
-                            </div>
-                        </div>
+                        {% endfor %}
 
                         <div class="col-sm-6 col-md-3 p0">
                             <div class="box-tree more-proerty text-center">
@@ -215,9 +78,9 @@
                                     <i class="fa fa-th"></i>
                                 </div>
                                 <div class="more-entry overflow">
-                                    <h5><a href="property-1.html" >CAN'T DECIDE ? </a></h5>
-                                    <h5 class="tree-sub-ttl">Show all properties</h5>
-                                    <button class="btn border-btn more-black" value="All properties">All properties</button>
+                                    <h5><a href="property-1.html" >KARAR VEREMEDİNİZ Mİ ? </a></h5>
+                                    <h5 class="tree-sub-ttl">Tüm İlanları Listeleyebilirsiniz</h5>
+                                    <button class="btn border-btn more-black" value="All properties">Tüm ilanlar</button>
                                 </div>
                             </div>
                         </div>
