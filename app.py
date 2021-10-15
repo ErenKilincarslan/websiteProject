@@ -1,7 +1,13 @@
+from flask_pymongo import PyMongo
 from flask import Flask
 from flask import render_template
+from flask import jsonify
 
 app = Flask(__name__)
+
+app.config["MONGO_URI"] = "mongodb://localhost:27017/oguzlar"
+mongodb_client = PyMongo(app)
+db = mongodb_client.db
 
 @app.route("/")
 def home_page():
