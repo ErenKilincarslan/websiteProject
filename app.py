@@ -1,7 +1,8 @@
+from flask.helpers import url_for
 from flask_pymongo import PyMongo
-from flask import Flask
-from flask import render_template
-from flask import jsonify
+from flask import Flask,render_template,Request
+from werkzeug.wrappers import request
+from werkzeug.utils import redirect
 
 app = Flask(__name__)
 
@@ -29,3 +30,15 @@ def blog_page():
 @app.route("/404")
 def error_page():
     return render_template("404.html")
+
+@app.route("/giris_yap")
+def login():
+    return render_template("register.html")
+
+@app.route("/kayit_ekle")
+def add_user():
+    db.oguzlar.insert_one({'username': "admin", 'password': "admin"})
+
+@app.route("/kayit_sil")
+def delete_user():
+    db.oguzlar.delete_many({'username' : 'eren'})
