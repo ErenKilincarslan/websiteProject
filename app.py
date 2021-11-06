@@ -1,14 +1,40 @@
 from flask.helpers import url_for
-from flask_pymongo import PyMongo
-from flask import Flask,render_template,Request
-from werkzeug.wrappers import request
+from flask_login import LoginManager,login_user,current_user
+from flask_login.utils import login_required, logout_user
+from flask_mongoengine import MongoEngine
+from flask import Flask,render_template,request,json,jsonify,current_app,flash,session
+from passlib.hash import pbkdf2_sha256 as hasher
 from werkzeug.utils import redirect
+from uuid import uuid4
+from models import db,User
+from flask_session import Session
+
 
 app = Flask(__name__)
-
 app.config["MONGO_URI"] = "mongodb://localhost:27017/oguzlar"
-mongodb_client = PyMongo(app)
-db = mongodb_client.db
+app.config.from_object(__name__)
+
+app.secret_key = 'super secret key'
+app.config['SESSION_TYPE'] = 'filesystem'
+
+sess = Session()
+
+
+login_manager = LoginManager()
+login_manager.login_view = "login"
+
+sess.init_app(app)
+db.init_app(app)
+login_manager.init_app(app)
+
+def get_user(user_id):
+    user = User.object(id = user_id).first()
+    if user is not None:
+        return user
+
+@login_manager.user_loader
+def load_user(user_id):
+    return get_user(user_id)
 
 @app.route("/")
 def home_page():
@@ -31,14 +57,59 @@ def blog_page():
 def error_page():
     return render_template("404.html")
 
-@app.route("/giris_yap")
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.objects(id = user_id).first()
+
+@app.route("/login" , methods=['GET', 'POST'])
 def login():
-    return render_template("register.html")
+    if request.method == 'POST':
+        user_email = request.form["email"]
+        user_password = request.form["password"]
+        user_profile = User.objects(email = user_email).first()
+        if user_profile is not None: 
+            if hasher.verify(user_password ,user_profile["password"]):
+                session["user"]=user_profile
+                login_user(user_profile)
+                user_profile.is_online = True
+                flash('Logged in successfully.')
+                return redirect(url_for("home_page"))
+    else:
+        return render_template("login.html")
 
-@app.route("/kayit_ekle")
+@login_required
+@app.route("/logout")
+def logout():
+    if session["user"] is not None:
+        user = session["user"]
+        user.is_online = False
+        session["user"] = None
+        logout_user()
+        flash("You Logged Out Successfully.")
+        return redirect(url_for("home_page"))
+    return redirect(url_for("home_page"))
+
+@login_required
+@app.route("/admin_panel")
+def panel_page():
+    return render_template("admin.html")
+
+@app.route("/kullanici_ekle")
 def add_user():
-    db.oguzlar.insert_one({'username': "admin", 'password': "admin"})
+    new_user = User()
+    new_user.id = uuid4().hex
+    new_user.email = "admin@oguzlargayrimenkul.com"
+    new_user.name = "admin"
+    new_user.surname = "admin"
+    new_user.password = hasher.hash("admin")
+    new_user.save()
+    return redirect(url_for("home_page"))
 
-@app.route("/kayit_sil")
+@app.route("/kullanici_sil")
 def delete_user():
-    db.oguzlar.delete_many({'username' : 'eren'})
+    user_list = User.objects()
+    print(user_list)
+    pass
+
+app.run(port=5000)

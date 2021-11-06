@@ -72,7 +72,7 @@
     </div>          
     <!--End top header -->
 
-    <nav class="navbar navbar-default " style="background-color: #272727;">
+    <nav class="navbar navbar-default " style="background-color: #272728;">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -91,9 +91,18 @@
                     <h2 style="font-family: Dutch801-extra-bold-bt ; color:azure">OĞUZLAR GAYRİMENKUL</h5>
 
                 </div>
-                <div class="button navbar-right">
-                    <button class="navbar-btn nav-button wow bounceInRight login" onclick="window.location.href='/giris_yap'" data-wow-delay="0.4s">Personel Giriş</button>
-                </div>
+
+                {%if not session["user"] %}
+                    <div class="button navbar-right">
+                        <button class="navbar-btn nav-button wow bounceInRight login" onclick="window.location.href='/login'" data-wow-delay="0.4s">Personel Giriş</button>
+                    </div>
+
+                {% else%}
+                    <div class="button navbar-right">
+                        <button class="navbar-btn nav-button wow bounceInRight login" onclick="window.location.href='/logout'" data-wow-delay="0.4s">Çıkış Yap</button>
+                    </div>
+                {% endif %}
+
                 <ul class="main-nav nav navbar-nav navbar-right">
                     <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="{{ url_for('home_page')}}">Anasayfa</a></li>
                     <li class="wow fadeInDown" data-wow-delay="0.25s"><a class="" href="{{ url_for('properties_page')}}">İlanlar</a></li>
@@ -104,6 +113,10 @@
     </nav>
     <!-- End of nav bar -->
 
+
+    {% for message in get_flashed_messages() %}
+        <div class= "message">{{ message }}</div>
+    {% endfor %}
 
     <!-- Body content -->
     <div id="content">{% block content %}{% endblock %}</div>
